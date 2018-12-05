@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 /*
  * Framework coleciones Java
@@ -75,8 +76,20 @@ public class Prueba {
 			public int compareTo(Alumno a) {
 				return edad.compareTo(a.edad);
 			}
+			public boolean equals(Alumno a) {
+				boolean result=false;
+				if(a instanceof Alumno) {
+					Alumno alumno=(Alumno)a;
+					result = edad.equals(edad);
+				}
+				return result;
+			}
+			public int hashCode() {
+				return edad.hashCode();
+			}
 			
 		}//class Alumno
+		
 		
 		Alumno a1 = new Alumno("17",20);
 		Alumno a2 = new Alumno("1",1);
@@ -99,7 +112,10 @@ public class Prueba {
 		//Busqueda
 		System.out.println("_______________________________");
 		System.out.println(Collections.binarySearch(numeros, -1));
+	    Alumno x=a1;
+		System.out.println(Collections.binarySearch(alumnos,a1));//Lee el objeto a buscar
 		//Tarea:Aplicar binarySearch en colleccion alumnos
+		
 	
 	}//main
 
